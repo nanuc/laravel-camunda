@@ -11,7 +11,7 @@
     "authors": [
         {
             "name": ":author_name",
-            "email": "packages@wertmenschen.de",
+            "email": "packages@wertmenschen.de"
         }
     ],
     "repositories":
