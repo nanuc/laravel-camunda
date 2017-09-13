@@ -31,12 +31,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Wertmenschen\\LaravelCamunda\\": "src"
+            "Wertmenschen\\CamundaApi\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Wertmenschen\\LaravelCamunda\\": "tests"
+            "Wertmenschen\\CamundaApi\\": "tests"
         }
     },
     "scripts": {
