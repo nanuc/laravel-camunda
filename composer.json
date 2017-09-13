@@ -1,0 +1,56 @@
+{
+    "name": "wertmenschen/laravel-camunda",
+    "type": "library",
+    "description": "Laravel API wrapper for Camunda",
+    "keywords": [
+        "wertmenschen",
+        "laravel-camunda"
+    ],
+    "homepage": "https://github.com/wertmenschen/laravel-camunda",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": ":author_name",
+            "email": "packages@wertmenschen.de",
+        }
+    ],
+    "repositories":
+    [
+        {
+            "type": "vcs",
+            "url": "https://github.com/wertmenschen/camunda-bpm-php-sdk"
+        }
+    ],
+    "require": {
+        "illuminate/support": "~5.5",
+        "camunda/camunda-bpm-php-sdk": "dev-master",
+        "php" : "~7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : ">=5.4.3",
+        "squizlabs/php_codesniffer": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Wertmenschen\\LaravelCamunda\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Wertmenschen\\LaravelCamunda\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests",
+        "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
