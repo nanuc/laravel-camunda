@@ -1,5 +1,17 @@
 # Laravel API wrapper for Camunda
 
+#### Edit your composer.json file
+The original Camunda repository has outdated dependencies.
+```shell
+"repositories":
+    [
+        {
+            "type": "vcs",
+            "url": "https://github.com/wertmenschen/camunda-bpm-php-sdk"
+        }
+    ],
+```
+
 #### Require this package with composer
 
 ```shell
