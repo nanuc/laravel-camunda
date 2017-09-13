@@ -2,7 +2,6 @@
     "name": "wertmenschen/laravel-camunda",
     "type": "library",
     "description": "Laravel API wrapper for Camunda",
-    "version": "0.1",
     "keywords": [
         "wertmenschen",
         "laravel-camunda"
@@ -13,13 +12,6 @@
         {
             "name": ":author_name",
             "email": "packages@wertmenschen.de"
-        }
-    ],
-    "repositories":
-    [
-        {
-            "type": "vcs",
-            "url": "https://github.com/wertmenschen/camunda-bpm-php-sdk"
         }
     ],
     "require": {
