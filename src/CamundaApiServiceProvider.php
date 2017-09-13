@@ -28,7 +28,6 @@ class CamundaApiServiceProvider extends ServiceProvider
     {
         $this->app->bind('camunda-api', function ($app) {
             $client = new Api(config('camunda.api.url'));
-            l(config('camunda.api.url'));
             return new CamundaApi($client);
         });
     }
