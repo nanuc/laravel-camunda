@@ -1,7 +1,7 @@
 # Laravel API wrapper for Camunda
 
 #### Edit your composer.json file
-The original Camunda repository has outdated dependencies.
+The original Camunda repository has outdated dependencies. Therefore we have to include it manually.
 ```shell
 "repositories":
     [
@@ -12,7 +12,11 @@ The original Camunda repository has outdated dependencies.
     ],
 ```
 
-#### Require this package with composer
+#### Require the packages with composer
+
+```shell
+composer require camunda/camunda-bpm-php-sdk:dev-master
+```
 
 ```shell
 composer require wertmenschen/laravel-camunda
