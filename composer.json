@@ -14,15 +14,9 @@
             "email": "packages@wertmenschen.de"
         }
     ],
-    "repositories":
-    [
-        {
-            "type": "vcs",
-            "url": "https://github.com/wertmenschen/camunda-bpm-php-sdk"
-        }
-    ],
     "require": {
         "illuminate/support": "~5.5",
+        "wertmenschen/camunda-bpm-php-sdk": "1.1.",
         "php" : "~7.0"
     },
     "require-dev": {

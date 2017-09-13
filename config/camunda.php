@@ -2,6 +2,6 @@
 
 return [
     'api' => [
-        'url' => env('CAMUNDA_API_URL', 'http://localhost/engine-rest')
+        'url' => env('CAMUNDA_API_URL', 'http://localhost:8080/engine-rest')
     ]
 ];
