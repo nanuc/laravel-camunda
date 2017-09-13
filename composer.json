@@ -16,7 +16,7 @@
     ],
     "require": {
         "illuminate/support": "~5.5",
-        "wertmenschen/camunda-bpm-php-sdk": "1.1.",
+        "wertmenschen/camunda-bpm-php-sdk": "1.1.*",
         "php" : "~7.0"
     },
     "require-dev": {
@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Wertmenschen\\LaravelCamunda\\": "src"
+            "Wertmenschen\\CamundaApi\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Wertmenschen\\LaravelCamunda\\": "tests"
+            "Wertmenschen\\CamundaApi\\": "tests"
         }
     },
     "scripts": {
