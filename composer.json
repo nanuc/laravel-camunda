@@ -47,6 +47,14 @@
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Wertmenschen\\CamundaApi\\CamundaApiServiceProvider"
+            ],
+            "aliases": {
+                "Camunda" : "Wertmenschen\\CamundaApi\\CamundaApiFacade"
+            }
         }
     },
     "config": {
