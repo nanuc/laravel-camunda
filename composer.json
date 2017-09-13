@@ -2,6 +2,7 @@
     "name": "wertmenschen/laravel-camunda",
     "type": "library",
     "description": "Laravel API wrapper for Camunda",
+    "version": "0.1",
     "keywords": [
         "wertmenschen",
         "laravel-camunda"
