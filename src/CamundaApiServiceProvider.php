@@ -25,8 +25,6 @@ class CamundaApiServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //$this->app->bind('camunda-api', function ($app) {
-            //return new CamundaApi();
-        //});
+
     }
 }
