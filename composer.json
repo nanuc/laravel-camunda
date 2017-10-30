@@ -16,7 +16,7 @@
     ],
     "require": {
         "illuminate/support": "~5.5",
-        "wertmenschen/camunda-bpm-php-sdk": "1.1.*",
+        "guzzlehttp/guzzle": "^6.3",
         "php" : "~7.0"
     },
     "require-dev": {

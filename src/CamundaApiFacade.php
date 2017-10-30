@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\Facade;
 
 class CamundaApiFacade extends Facade
 {
-    protected static function getFacadeAccessor()
-    {
-        return 'camunda-api';
-    }
+    //protected static function getFacadeAccessor()
+    //{
+        //return 'camunda-api';
+    //}
 }

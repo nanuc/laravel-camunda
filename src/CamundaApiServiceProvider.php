@@ -3,7 +3,6 @@
 namespace Wertmenschen\CamundaApi;
 
 use Illuminate\Support\ServiceProvider;
-use org\camunda\php\sdk\Api;
 
 class CamundaApiServiceProvider extends ServiceProvider
 {
@@ -26,9 +25,8 @@ class CamundaApiServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('camunda-api', function ($app) {
-            $client = new Api(config('camunda.api.url'));
-            return new CamundaApi($client);
-        });
+        //$this->app->bind('camunda-api', function ($app) {
+            //return new CamundaApi();
+        //});
     }
 }

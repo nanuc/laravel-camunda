@@ -7,6 +7,7 @@ use org\camunda\php\sdk\entity\request\ProcessDefinitionRequest;
 
 class CamundaApi
 {
+    /*
     protected $client;
 
     public function __construct(Api $client)
@@ -19,4 +20,5 @@ class CamundaApi
         $processDefinitionRequest = new ProcessDefinitionRequest();
         return $this->client->processDefinition->getDefinitions($processDefinitionRequest);
     }
+    */
 }
