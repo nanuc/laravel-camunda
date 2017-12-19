@@ -20,6 +20,10 @@ class Deployment extends CamundaModel
             [
                 'name' => 'deployment-name',
                 'contents' => $name,
+            ],
+            [
+                'name' => 'tenant-id',
+                'contents' => config('camunda.api.tenant-id'),
             ]
         ];
 
