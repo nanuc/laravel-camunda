@@ -9,7 +9,8 @@ class ProcessDefinition extends CamundaModel
 
     public function startInstance()
     {
-        $processDefinition = $this->post('process-definition/key/' . $this->key . '/start');
+        $tenant = strlen(config('camunda.api.tenant-id')) ? '/tenant-id/' . config('camunda.api.tenant-id') : '';
+        $processDefinition = $this->post('process-definition/key/' . $this->key . $tenant . '/start');
         return new ProcessInstance($processDefinition->id);
     }
 
