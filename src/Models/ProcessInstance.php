@@ -29,6 +29,11 @@ class ProcessInstance extends CamundaModel
     {
         return get_object_vars($this->get('variables'));
     }
+    
+    public function delete()
+    {
+        return parent::delete();
+    }
 
     public function ended()
     {
