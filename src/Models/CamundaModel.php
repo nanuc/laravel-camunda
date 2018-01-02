@@ -36,6 +36,11 @@ abstract class CamundaModel
     {
         return $this->request($url, 'put', compact('json'));
     }
+    
+    protected function delete($url, $json = [], $noJson = false)
+    {
+        return $this->request($url, 'delete', compact('json'));
+    }
 
     protected function get($url)
     {
