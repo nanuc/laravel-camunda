@@ -50,6 +50,8 @@ abstract class CamundaModel
 
     private function request($url, $method, $data = [])
     {
+        $data['auth'] = [config('camunda.api.auth.user'), config('camunda.api.auth.password')];
+        
         try {
             $response = $this->client->{$method}($this->buildUrl($url), $data);
         }
