@@ -10,6 +10,7 @@ abstract class CamundaModel
 {
     protected $client;
     public $id;
+    public $key;
 
     public function __construct($id = null, $attributes = [])
     {
@@ -69,6 +70,16 @@ abstract class CamundaModel
 
     private function modelUri()
     {
-        return kebab_case(class_basename($this)) . '/' . $this->id;
+        if($this->key) {
+            return kebab_case(class_basename($this)) . '/key/' . $this->key . $this->tenant();
+        }
+        else {
+            return kebab_case(class_basename($this)) . '/' . $this->id;
+        }
+    }
+    
+    protected function tenant()
+    {
+        return strlen(config('camunda.api.tenant-id')) ? '/tenant-id/' . config('camunda.api.tenant-id') : '';
     }
 }
