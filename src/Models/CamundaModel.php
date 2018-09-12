@@ -64,7 +64,7 @@ abstract class CamundaModel
 
     private function buildUrl($url)
     {
-        $modelUri = empty($this->id) || str_contains($url, '?') ? '' : $this->modelUri() . '/';
+        $modelUri = (empty($this->id) && empty($this->key)) || str_contains($url, '?') ? '' : $this->modelUri() . '/';
         return 'engine-rest/' . $modelUri . $url;
     }
 
