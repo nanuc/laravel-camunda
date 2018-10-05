@@ -52,13 +52,8 @@ abstract class CamundaModel
     private function request($url, $method, $data = [])
     {
         $data['auth'] = [config('camunda.api.auth.user'), config('camunda.api.auth.password')];
-        
-        try {
-            $response = $this->client->{$method}($this->buildUrl($url), $data);
-        }
-        catch (ServerException $e) {
-            dd(json_decode($e->getResponse()->getBody()->getContents()));
-        }
+
+        $response = $this->client->{$method}($this->buildUrl($url), $data);
         return json_decode($response->getBody());
     }
 
