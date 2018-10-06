@@ -20,6 +20,11 @@ class ProcessInstance extends CamundaModel
         ]);
     }
     
+    public function getInfo()
+    {
+        return $this->get('');
+    }
+    
     public function getVariable($key)
     {
         return $this->get('variables/' . $key);
