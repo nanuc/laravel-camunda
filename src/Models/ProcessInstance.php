@@ -2,10 +2,10 @@
 
 namespace Wertmenschen\CamundaApi\Models;
 
+use Illuminate\Support\Arr;
 
 class ProcessInstance extends CamundaModel
 {
-
     public function currentTask()
     {
         $tasks = $this->get('task/?processInstanceId=' . $this->id);
@@ -17,9 +17,31 @@ class ProcessInstance extends CamundaModel
         $this->put('variables/' . $key, [
             'type' => $type,
             'value' => $value
-        ]);
+        ], true);
     }
-    
+
+    public function setVariables($modifications, $deletions = [])
+    {
+        $modificationsArray = [];
+
+        foreach($modifications as $modification) {
+            if(!is_array($modification)) {
+                $modification = [
+                    'key' => $modification
+                ];
+            }
+            $modificationsArray[$modification['key']] = [
+                'value' => Arr::get($modification, 'value', 0),
+                'type' => Arr::get($modification, 'type', 'String')
+            ];
+        }
+
+        $this->post('variables', [
+            'modifications' => $modificationsArray,
+            'deletions' => $deletions
+        ], true);
+    }
+
     public function getInfo()
     {
         return $this->get('');

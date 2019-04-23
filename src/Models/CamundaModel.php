@@ -3,8 +3,8 @@
 namespace Wertmenschen\CamundaApi\Models;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ServerException;
-
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Config;
 
 abstract class CamundaModel
 {
@@ -15,7 +15,7 @@ abstract class CamundaModel
     public function __construct($id = null, $attributes = [])
     {
         $this->client = new Client([
-            'base_uri' => config('camunda.api.url')
+            'base_uri' => Config::get('camunda.api.url')
         ]);
 
         $this->id = $id;
@@ -25,22 +25,22 @@ abstract class CamundaModel
         }
     }
 
-
-
-    protected function post($url, $data = [], $noJson = false)
+    protected function post($url, $data = [], $json = false)
     {
-        $data = $noJson ? $data : array_merge(['json' => ['a' => 'v']], $data);  // somehow that is needed for now to mark it as application/json
+        $data = $json ? ['json' => $data] : $data;
         return $this->request($url, 'post', $data);
     }
 
-    protected function put($url, $json = [], $noJson = false)
+    protected function put($url, $data = [], $json = false)
     {
-        return $this->request($url, 'put', compact('json'));
+        $data = $json ? ['json' => $data] : $data;
+        return $this->request($url, 'put', $data);
     }
-    
-    protected function delete($url, $json = [], $noJson = false)
+
+    protected function delete($url, $data = [], $json = false)
     {
-        return $this->request($url, 'delete', compact('json'));
+        $data = $json ? ['json' => $data] : $data;
+        return $this->request($url, 'delete', $data);
     }
 
     protected function get($url)
@@ -51,7 +51,7 @@ abstract class CamundaModel
 
     private function request($url, $method, $data = [])
     {
-        $data['auth'] = [config('camunda.api.auth.user'), config('camunda.api.auth.password')];
+        $data['auth'] = [Config::get('camunda.api.auth.user'), Config::get('camunda.api.auth.password')];
 
         $response = $this->client->{$method}($this->buildUrl($url), $data);
         return json_decode($response->getBody());
@@ -66,15 +66,15 @@ abstract class CamundaModel
     private function modelUri()
     {
         if($this->key) {
-            return kebab_case(class_basename($this)) . '/key/' . $this->key . $this->tenant();
+            return Str::kebab(class_basename($this)) . '/key/' . $this->key . $this->tenant();
         }
         else {
-            return kebab_case(class_basename($this)) . '/' . $this->id;
+            return Str::kebab(class_basename($this)) . '/' . $this->id;
         }
     }
-    
+
     protected function tenant()
     {
-        return strlen(config('camunda.api.tenant-id')) ? '/tenant-id/' . config('camunda.api.tenant-id') : '';
+        return strlen(Config::get('camunda.api.tenant-id')) ? '/tenant-id/' . Config::get('camunda.api.tenant-id') : '';
     }
 }

@@ -2,10 +2,8 @@
 
 namespace Wertmenschen\CamundaApi\Models;
 
-
 class Deployment extends CamundaModel
 {
-
     public function create($name, $file)
     {
         $filename = pathinfo($file)['basename'];
@@ -29,9 +27,6 @@ class Deployment extends CamundaModel
 
         $this->post('deployment/create', [
             'multipart' => array_merge($multipart, $files)
-        ], true);
+        ]);
     }
-
-
-
 }
