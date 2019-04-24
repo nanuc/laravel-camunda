@@ -3,6 +3,7 @@
 namespace Wertmenschen\CamundaApi\Models;
 
 use GuzzleHttp\Client;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Config;
 
@@ -27,27 +28,36 @@ abstract class CamundaModel
 
     protected function post($url, $data = [], $json = false)
     {
-        $data = $json ? ['json' => $data] : array_merge(['json' => ['a' => 'b']], $data);
-        return $this->request($url, 'post', $data);
+        return $this->request($url, 'post', $this->getData($data, $json));
     }
 
     protected function put($url, $data = [], $json = false)
     {
-        $data = $json ? ['json' => $data] : array_merge(['json' => ['a' => 'b']], $data);
-        return $this->request($url, 'put', $data);
+        return $this->request($url, 'put', $this->getData($data, $json));
     }
 
     protected function delete($url, $data = [], $json = false)
     {
-        $data = $json ? ['json' => $data] : array_merge(['json' => ['a' => 'b']], $data);
-        return $this->request($url, 'delete', $data);
+        return $this->request($url, 'delete', $this->getData($data, $json));
+    }
+
+    protected function getData($data, $json)
+    {
+        if(Arr::has($data, 'multipart')) {
+            return $data;
+        }
+        elseif($json) {
+            return ['json' => $data];
+        }
+        else {
+            return array_merge(['json' => ['a' => 'b']], $data);
+        }
     }
 
     protected function get($url)
     {
         return $this->request($url, 'get');
     }
-
 
     private function request($url, $method, $data = [])
     {
