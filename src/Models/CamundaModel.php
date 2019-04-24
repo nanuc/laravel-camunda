@@ -27,19 +27,19 @@ abstract class CamundaModel
 
     protected function post($url, $data = [], $json = false)
     {
-        $data = $json ? ['json' => $data] : $data;
+        $data = $json ? ['json' => $data] : array_merge(['json' => ['a' => 'b']], $data);
         return $this->request($url, 'post', $data);
     }
 
     protected function put($url, $data = [], $json = false)
     {
-        $data = $json ? ['json' => $data] : $data;
+        $data = $json ? ['json' => $data] : array_merge(['json' => ['a' => 'b']], $data);
         return $this->request($url, 'put', $data);
     }
 
     protected function delete($url, $data = [], $json = false)
     {
-        $data = $json ? ['json' => $data] : $data;
+        $data = $json ? ['json' => $data] : array_merge(['json' => ['a' => 'b']], $data);
         return $this->request($url, 'delete', $data);
     }
 
