@@ -66,4 +66,9 @@ class ProcessInstance extends CamundaModel
     {
         return $this->get('history/process-instance/?processInstanceId=' . $this->id)[0]->state == 'COMPLETED';
     }
+    
+    public function getEndEventId()
+    {
+        return optional(Arr::first($this->get('history/activity-instance/?processInstanceId=' . $this->id . '&activityType=noneEndEvent')))->activityId;
+    }
 }
