@@ -11,9 +11,9 @@ class ProcessDefinition extends CamundaModel
         return $processDefinition;
     }
     
-    public function startInstance()
+    public function startInstance($data = [])
     {
-        $processDefinition = $this->post('start');
+        $processDefinition = $this->post('start', $data, true);
         return new ProcessInstance($processDefinition->id);
     }
     
