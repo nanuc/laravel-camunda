@@ -13,6 +13,11 @@ class ProcessDefinition extends CamundaModel
     
     public function startInstance($data = [])
     {
+        // At least one value must be set...
+        if(count($data) == 0) {
+            $data['a'] = 'b';
+        }
+
         $processDefinition = $this->post('start', $data, true);
         return new ProcessInstance($processDefinition->id);
     }
