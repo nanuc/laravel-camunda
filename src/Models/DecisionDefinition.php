@@ -7,7 +7,7 @@ class DecisionDefinition extends CamundaModel
 {
     public function evaluate($variables)
     {
-        return $this->post('evaluate', ['json' => compact('variables')], true);
+        return $this->post('evaluate', ['json' => compact('variables')]);
     }
 
     public function getDefinition()
