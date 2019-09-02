@@ -71,4 +71,9 @@ class ProcessInstance extends CamundaModel
     {
         return optional(Arr::first($this->get('history/activity-instance/?processInstanceId=' . $this->id . '&activityType=noneEndEvent')))->activityId;
     }
+    
+    public function modify($data)
+    {
+        return $this->post('modification', $data,true);
+    }
 }
