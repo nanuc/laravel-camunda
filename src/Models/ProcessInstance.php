@@ -62,6 +62,14 @@ class ProcessInstance extends CamundaModel
         return $this->delete('');
     }
 
+    public function deleteProcessInstances($processInstanceIds, $deleteReason = 'none')
+    {
+        return $this->post('process-instance/delete', [
+            'processInstanceIds' => $processInstanceIds,
+            'deleteReason' => $deleteReason
+        ], true);
+    }
+
     public function ended()
     {
         return $this->get('history/process-instance/?processInstanceId=' . $this->id)[0]->state == 'COMPLETED';
