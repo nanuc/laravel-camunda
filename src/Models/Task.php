@@ -8,4 +8,9 @@ class Task extends CamundaModel
     {
         $this->post('complete');
     }
+
+    public function getList($filters = [], $maxResults = 100, $firstResult = 0)
+    {
+        return $this->post("task?firstResult=$firstResult&maxResults=$maxResults", $filters, true);
+    }
 }
