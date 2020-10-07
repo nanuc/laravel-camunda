@@ -33,4 +33,17 @@ class History extends CamundaModel
     {
         return $this->get('history/process-instance');
     }
+
+    public function deleteProcessInstance($processInstanceId)
+    {
+        return $this->delete('history/process-instance/'.$processInstanceId);
+    }
+
+    public function deleteProcessInstances($processInstanceIds, $deleteReason = 'none')
+    {
+        return $this->post('history/process-instance/delete', [
+            'processInstanceIds' => $processInstanceIds,
+            'deleteReason' => $deleteReason
+        ], true);
+    }
 }
