@@ -72,6 +72,12 @@ class ProcessInstance extends CamundaModel
 
     public function ended()
     {
+        $processInstance = $this->get('history/process-instance/?processInstanceId=' . $this->id);
+
+        if(count($processInstance) == 0) {
+            return true;
+        }
+
         return $this->get('history/process-instance/?processInstanceId=' . $this->id)[0]->state == 'COMPLETED';
     }
     
