@@ -4,7 +4,7 @@
 #### Require the packages with composer
 
 ```shell
-composer require wertmenschen/laravel-camunda
+composer require nanuc/laravel-camunda
 ```
 
 #### Optional: Publish the backup config file
