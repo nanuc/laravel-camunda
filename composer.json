@@ -1,12 +1,12 @@
 {
-    "name": "wertmenschen/laravel-camunda",
+    "name": "nanuc/laravel-camunda",
     "type": "library",
     "description": "Laravel API wrapper for Camunda",
     "keywords": [
         "wertmenschen",
         "laravel-camunda"
     ],
-    "homepage": "https://github.com/wertmenschen/laravel-camunda",
+    "homepage": "https://github.com/nanuc/laravel-camunda",
     "license": "MIT",
     "authors": [
         {
