@@ -1,6 +1,6 @@
 <?php
 
-namespace Wertmenschen\CamundaApi;
+namespace Nanuc\Camunda;
 
 use Illuminate\Support\ServiceProvider;
 

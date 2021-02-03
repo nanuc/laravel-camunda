@@ -1,6 +1,6 @@
 <?php
 
-namespace Wertmenschen\CamundaApi\Models;
+namespace Nanuc\Camunda\Models;
 
 class History extends CamundaModel
 {
