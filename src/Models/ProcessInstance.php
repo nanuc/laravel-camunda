@@ -46,7 +46,17 @@ class ProcessInstance extends CamundaModel
     {
         return $this->get('');
     }
-    
+
+    public function processInstancesCount()
+    {
+        return $this->get('process-instance/count');
+    }
+
+    public function getList()
+    {
+        return $this->get('process-instance');
+    }
+
     public function getVariable($key)
     {
         return $this->get('variables/' . $key);
