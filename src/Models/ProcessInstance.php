@@ -8,8 +8,15 @@ class ProcessInstance extends CamundaModel
 {
     public function currentTask()
     {
+        return Arr::first($this->currentTasks());
+    }
+
+    public function currentTasks()
+    {
         $tasks = $this->get('task/?processInstanceId=' . $this->id);
-        return count($tasks) > 0 ? new Task($tasks[0]->id, $tasks[0]) : null;
+        return array_map(function($task) {
+            return new Task($task->id, $task);
+        }, $tasks ?? []);
     }
 
     public function setVariable($key, $value, $type = 'String')
@@ -66,7 +73,7 @@ class ProcessInstance extends CamundaModel
     {
         return get_object_vars($this->get('variables'));
     }
-    
+
     public function deleteProcessInstance()
     {
         return $this->delete('');
@@ -90,12 +97,12 @@ class ProcessInstance extends CamundaModel
 
         return $this->get('history/process-instance/?processInstanceId=' . $this->id)[0]->state == 'COMPLETED';
     }
-    
+
     public function getEndEventId()
     {
         return optional(Arr::first($this->get('history/activity-instance/?processInstanceId=' . $this->id . '&activityType=noneEndEvent')))->activityId;
     }
-    
+
     public function modify($data)
     {
         return $this->post('modification', $data,true);
