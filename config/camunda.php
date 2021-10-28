@@ -8,5 +8,7 @@ return [
             'user' => env('CAMUNDA_API_USER'),
             'password' => env('CAMUNDA_API_PASSWORD'),
         ],
-    ]
+    ],
+    'logging' => env('CAMUNDA_LOGGING', false),
+    'logging-channel' => env('CAMUNDA_LOGGING_CHANNEL', 'camunda'),
 ];

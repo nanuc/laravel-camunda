@@ -4,6 +4,7 @@ namespace Nanuc\Camunda\Models;
 
 use GuzzleHttp\Client;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Config;
 
@@ -63,7 +64,21 @@ abstract class CamundaModel
     {
         $data['auth'] = [Config::get('camunda.api.auth.user'), Config::get('camunda.api.auth.password')];
 
+        $time = microtime(true);
         $response = $this->client->{$method}($this->buildUrl($url), $data);
+        $time = round(microtime(true) - $time, 3) . 's';
+
+        if(config('camunda.logging')) {
+            Log::channel(config('camunda.logging-channel'))
+                ->info(PHP_EOL.
+                    'Method:   ' . $method . PHP_EOL .
+                    'URI:      ' . $this->buildUrl($url) . PHP_EOL .
+                    'Data:     ' . json_encode($data, JSON_PRETTY_PRINT) . PHP_EOL .
+                    'Runtime:  ' . $time . PHP_EOL .
+                    'Response: ' . PHP_EOL . $response->getBody()
+                );
+        }
+
         return json_decode($response->getBody());
     }
 
