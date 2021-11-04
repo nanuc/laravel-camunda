@@ -69,13 +69,27 @@ abstract class CamundaModel
         $time = round(microtime(true) - $time, 3) . 's';
 
         if(config('camunda.logging')) {
+            $counter = 0;
+            $backtrace = [];
+            foreach(debug_backtrace() as $trace) {
+                if(!Str::contains($trace['file'], 'laravel-camunda')) {
+                    $backtrace[] = str_replace(base_path(), '', $trace['file'] . ':' . $trace['line']);
+                    $counter++;
+                }
+
+                if($counter >= config('camunda.logging-backtrace-entries')) {
+                    break;
+                }
+            }
+
             Log::channel(config('camunda.logging-channel'))
                 ->info(PHP_EOL.
                     'Method:   ' . $method . PHP_EOL .
                     'URI:      ' . $this->buildUrl($url) . PHP_EOL .
                     'Data:     ' . json_encode($data, JSON_PRETTY_PRINT) . PHP_EOL .
                     'Runtime:  ' . $time . PHP_EOL .
-                    'Response: ' . PHP_EOL . $response->getBody()
+                    'Response: ' . PHP_EOL . $response->getBody() .
+                    'Backtrace:' . PHP_EOL . implode(PHP_EOL, $backtrace) . PHP_EOL
                 );
         }
 

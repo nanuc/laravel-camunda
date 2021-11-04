@@ -11,4 +11,5 @@ return [
     ],
     'logging' => env('CAMUNDA_LOGGING', false),
     'logging-channel' => env('CAMUNDA_LOGGING_CHANNEL', 'camunda'),
+    'logging-backtrace-entries' => env('CAMUNDA_LOGGING_BACKTRACE_ENTRIES', 3),
 ];
