@@ -88,7 +88,7 @@ abstract class CamundaModel
                     'URI:      ' . $this->buildUrl($url) . PHP_EOL .
                     'Data:     ' . json_encode($data, JSON_PRETTY_PRINT) . PHP_EOL .
                     'Runtime:  ' . $time . PHP_EOL .
-                    'Response: ' . PHP_EOL . $response->getBody() .
+                    'Response: ' . PHP_EOL . $response->getBody() . PHP_EOL .
                     'Backtrace:' . PHP_EOL . implode(PHP_EOL, $backtrace) . PHP_EOL
                 );
         }
